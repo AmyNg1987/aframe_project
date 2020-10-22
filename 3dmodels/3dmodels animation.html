@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>primitives</title>
+
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene
+      renderer="antialias: true;
+                   colorManagement: true;
+                   sortObjects: true;
+                   physicallyCorrectLights: true;
+                   maxCanvasWidth: 1920;
+                   maxCanvasHeight: 1920;
+                           light= type: ambient; 
+                           color: #FFFFFF"
+    >
+      <!-- Asset Management System-->
+      <a-assets>
+        <img id="floorr-NRM" src="../src/grass.jpg" />
+        <img id="starrysky" src="../src/9db89481f322b7ace0d389a7e8c391b8.jpg" />
+        <a-asset-item id="model" src="../src/scene.gltf"></a-asset-item>
+        <a-asset-item id="car-o" src="../src/obj__Audi_R8_2017.obj"></a-asset-item>
+        <a-asset-item id="car-m" src="../src/Audi_R8_2017.mtl"></a-asset-item>
+        <img id="hdrienvironment" src="../src/hdrienvironment.jpg" />
+
+      </a-assets>
+
+      <a-sky src="#hdrienvironment"></a-sky>
+
+<!-- House model -->
+      <a-entity
+        gltf-model="#model"
+        position="-1.917 1 -3.400"
+        scale="1 1 1">
+      ></a-entity>
+
+<!-- Camera -->
+<a-entity position="0 0.8 0">
+<a-camera position="0 0 15" ></a-camera>
+      <a-plane
+        material="color: #FFFFFF;
+                        src: #floorr-NRM;
+                        repeat: 500 500;
+                        normal-map: #floorr;
+                        normal-texture-repeat: 50 50"
+        rotation="-90 0 0"
+        scale="1000 1000 1"
+        position="0 0 0"
+      >
+      </a-plane>
+
+<!-- Car -->
+      <a-entity
+        obj-model="obj: #car-o; mtl: #car-m" position="3.917 0 3.400" scale="0.01 0.01 0.01">
+        <a-animation attribute="rotation"
+        to="0 360 0"><a-animation></a-entity>
+
+
+    </a-scene>
+  </body>
+</html>
